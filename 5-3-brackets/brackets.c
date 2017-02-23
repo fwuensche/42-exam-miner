@@ -5,96 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 16:31:57 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/27 12:57:53 by angavrel         ###   ########.fr       */
+/*   Created: 2017/02/23 03:32:55 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/23 03:42:22 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** thx to Anselme for his solution
+** https://github.com/grumbach/misc/blob/master/brackets/brackets.c
+*/
+
 #include <unistd.h>
 
-int		isclosing(char c)
+int	braclose(char *str, char c, int i, int b)
 {
-	if (c == 125)
-		return (3);
-	else if (c == 93)
-		return (2);
-	else if (c == 41)
+	while (b && *(++str) && (i++))
+		if (*str == c)
+			b++;
+		else if (*str == (c == '(' ? ')' : c + 2))
+			b--;
+	return (i);
+}
+
+int	brackets(char *str, char c)
+{
+	if (*str == c)
 		return (1);
-	return (0);
+	else if (!*str)
+		return (0);
+	else if (*str == ')' || *str == '}' || *str == ']')
+		return (0);
+	else if (*str == '(' || *str == '{' || *str == '[')
+		return (brackets(str + 1, (*str == '(' ? ')' : *str + 2))
+			* brackets(str + braclose(str, *str, 1, 1), c));
+	else
+		return (brackets(str + 1, c));
 }
 
-int		isopening(char c)
+int	main(int ac, char **av)
 {
-	if (c == 123)
-		return (3);
-	else if (c == 91)
-		return (2);
-	else if (c == 40)
-		return (1);
-	return (0);
-}
-
-static int		is_matching_bracket(char a, char b)
-{
-	return ((a == '(' && b == ')') ||
-			(a == '{' && b == '}') ||
-			(a == '[' && b == ']'));
-
-}
-char	*find_match(char b, char *s, int i)
-{
-	while (i >= 0)
-	{
-		if (is_matching_bracket(s[i], b))
-			return (s + i);
-		if (isopening(s[i]) && !is_matching_bracket(s[i], b))
-			return (NULL);
-		i--;
-	}
-	return (NULL);
-}
-
-int		brackets(char *s)
-{
-	int		i;
-	int		a;
-	char	*b;
+	int	i;
 
 	i = 0;
-	a = 0;
-	while (s[i])
-	{
-		if (isclosing(s[i]))
-		{
-			a = isclosing(s[i]);
-			if ((b = find_match(s[i], s, i)))
-			{
-				s[i] = '.';
-				*b = '.';
-				i = -1;
-			}
-			else
-				return (0);
-		}
-		i++;
-	}
-	i = -1;
-	while (s[++i])
-		if (isopening(s[i] || isclosing(s[i])))
-		{
-			write(1, "Error", 5);
-			return (0);
-		}
-	return (1);
-}
-
-int		main(int ac, char **av)
-{
-	int		i;
-
-	i = 0;
-	while (++i < ac)
-		(brackets(av[i])) ? write(1, "OK", 2) : write(1, "Error", 5);
-	write (1, "\n", 1);
+	if (ac > 1)
+		while (++i < ac)
+			(brackets(av[i], 0) ? write(1, "OK\n", 3) : write(1, "Error\n", 6);
+	else
+		write(1, "\n", 1);
 	return (0);
 }
