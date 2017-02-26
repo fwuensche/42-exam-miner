@@ -1,57 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   rostring.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 16:41:12 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/14 03:46:34 by angavrel         ###   ########.fr       */
+/*   Created: 2017/02/24 04:25:39 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/24 04:26:17 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int		check(char *s1, int i)
+int		ft_isblank(char c)
 {
-	int a;
-
-	a = 0;
-	while (a < i)
-		if (s1[a++] == s1[i])
-			return (0);
-	return (1);
+	if (c == ' ' || c == '\t')
+		return (1);
+	return (0);
 }
 
-void	inter(char *s1, char *s2)
+void	rostring(char *s)
 {
-	int		i;
-	int		j;
+	int		i = 0;
+	int		w_len = 0;
 
-	i = 0;
-	while (s1[i])
+	while (s[i])
 	{
-		if (check(s1, i))
+		while (ft_isblank(s[i]))
+			i++;
+		if (s[i] && !ft_isblank(s[i]))
 		{
-			j = 0;
-			while (s2[j])
+			if (!w_len)
+				while (s[i] && !ft_isblank(s[i++]))
+					w_len++;
+			else
 			{
-				if (s1[i] == s2[j])
-				{
-					write(1, &s2[j], 1);
-					break;
-				}
-				++j;
+				while (s[i] && !ft_isblank(s[i]) && write(1, &s[i++], 1));
+				write(1, " ", 1);
 			}
 		}
-		++i;
 	}
+	i = 0;
+	while (ft_isblank(s[i]))
+		i++;
+	while (w_len--)
+		write(1, &s[i++], 1);
 }
 
 int		main(int ac, char **av)
 {
-	if (ac == 3)
-		inter(av[1], av[2]);
+	if (ac > 1 && *av[1])
+		rostring(av[1]);
 	write(1, "\n", 1);
 	return (0);
 }

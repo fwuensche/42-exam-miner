@@ -1,57 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   ft_countdown.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 16:41:12 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/14 03:46:34 by angavrel         ###   ########.fr       */
+/*   Created: 2016/12/07 17:44:56 by angavrel          #+#    #+#             */
+/*   Updated: 2016/12/07 17:49:07 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int		check(char *s1, int i)
+void	ft_putchar(char c)
 {
-	int a;
-
-	a = 0;
-	while (a < i)
-		if (s1[a++] == s1[i])
-			return (0);
-	return (1);
+	write(1, &c, 1);
 }
 
-void	inter(char *s1, char *s2)
+int		main(void)
 {
-	int		i;
-	int		j;
+	int i;
 
-	i = 0;
-	while (s1[i])
-	{
-		if (check(s1, i))
-		{
-			j = 0;
-			while (s2[j])
-			{
-				if (s1[i] == s2[j])
-				{
-					write(1, &s2[j], 1);
-					break;
-				}
-				++j;
-			}
-		}
-		++i;
-	}
-}
-
-int		main(int ac, char **av)
-{
-	if (ac == 3)
-		inter(av[1], av[2]);
-	write(1, "\n", 1);
+	i = 10;
+	while (i-- > 0)
+		ft_putchar(i + '0');
+	ft_putchar('\n');
 	return (0);
 }

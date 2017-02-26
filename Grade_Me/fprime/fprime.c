@@ -1,57 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   fprime.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 16:41:12 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/14 03:46:34 by angavrel         ###   ########.fr       */
+/*   Created: 2017/02/24 04:18:19 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/24 04:20:48 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-int		check(char *s1, int i)
+void	fprime(int nb, int a, int i)
 {
-	int a;
-
-	a = 0;
-	while (a < i)
-		if (s1[a++] == s1[i])
-			return (0);
-	return (1);
-}
-
-void	inter(char *s1, char *s2)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	while (s1[i])
-	{
-		if (check(s1, i))
-		{
-			j = 0;
-			while (s2[j])
-			{
-				if (s1[i] == s2[j])
-				{
-					write(1, &s2[j], 1);
-					break;
-				}
-				++j;
-			}
-		}
+	a++;
+	while (nb % i && i < nb)
 		++i;
+	if (!nb % i)
+	{
+		if (a != 1)
+			printf("*");
+		printf("%d", i);
+		if (nb != i)
+			fprime(nb / i, a, i);
 	}
+	else
+		printf("%d", nb);
 }
+
 
 int		main(int ac, char **av)
 {
-	if (ac == 3)
-		inter(av[1], av[2]);
-	write(1, "\n", 1);
+	if (ac == 2)
+		fprime(atoi(av[1]), 0, 2);
+	printf("\n");
 	return (0);
 }

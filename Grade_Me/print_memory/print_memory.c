@@ -6,7 +6,7 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 04:29:55 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/26 12:44:41 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/24 05:29:18 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	print_memory(const void *addr, size_t size)
 		if (t[i] <  16)
 			ft_putchar('0');
 		ft_puthex(t[i]);
-		if (i % 2)
+		if (i & 1)
 			ft_putchar(' ');
 		if (col++ >> 4)
 		{
@@ -70,7 +70,7 @@ void	print_memory(const void *addr, size_t size)
 	{
 		i = col;
 		while (i++ < 16)
-			(i % 2) ? ft_putchar(' ') : ft_putstr("    ");
+			(i & 1) ? ft_putchar(' ') : ft_putstr("    ");
 		print_chars(t + (row * 16), col);
 	}
 }

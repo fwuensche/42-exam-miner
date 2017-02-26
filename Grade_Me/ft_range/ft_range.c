@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 20:36:22 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/26 12:43:29 by angavrel         ###   ########.fr       */
+/*   Created: 2016/09/07 19:31:19 by angavrel          #+#    #+#             */
+/*   Updated: 2016/12/08 16:40:56 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	print_memory(const void *addr, size_t size);
-
-int		main(void)
+int		*ft_range(int min, int max)
 {
-	int		tab[15] = {3772900067, 58597, 59111,
-		59625, 60139, 60653, 61167, 61681, 62195, 62709, 63223, 63737, 64251,
-	64765, 65279};
+	int		n;
+	int		*s;
 
-	print_memory(tab, sizeof(tab));
-	return (0);
+	n = max >= min ? max - min : min - max;
+	if (!(s = (int *)malloc(sizeof(int) * (n))))
+		return (NULL);
+	while (max != min)
+		*s++ = max > min ? min++ : min--;
+	*s = min;
+	return (s - n);
 }

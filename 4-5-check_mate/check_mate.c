@@ -6,7 +6,7 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 20:08:36 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/27 10:29:33 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/24 04:07:45 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -77,6 +77,5 @@ int		main(int ac, char **av)
 		write(1, "Success\n", 8);
 	else
 		write(1, "Fail\n", 5);
-	print(ac, av);
 	return (0);
 }

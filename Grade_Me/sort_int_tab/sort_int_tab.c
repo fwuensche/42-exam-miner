@@ -1,25 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_int_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 20:36:22 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/26 12:43:29 by angavrel         ###   ########.fr       */
+/*   Created: 2016/12/27 07:33:39 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/26 14:15:52 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	print_memory(const void *addr, size_t size);
-
-int		main(void)
+void	ft_swap(int *a, int *b)
 {
-	int		tab[15] = {3772900067, 58597, 59111,
-		59625, 60139, 60653, 61167, 61681, 62195, 62709, 63223, 63737, 64251,
-	64765, 65279};
+	int	tmp;
 
-	print_memory(tab, sizeof(tab));
-	return (0);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+void	sort_int_tab(int *tab, unsigned int size)
+{
+	unsigned	i;
+	int			sorted;
+
+	sorted = 0;
+	while (!sorted)
+	{
+		i = 0;
+		sorted = 1;
+		while (i < size - 1)
+		{
+			if (tab[i] > tab[i + 1])
+			{
+				ft_swap(&tab[i], &tab[i + 1]);
+				sorted = 0;
+			}
+			++i;
+		}
+	}
 }

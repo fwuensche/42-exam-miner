@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/03 21:43:06 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/27 11:29:47 by angavrel         ###   ########.fr       */
+/*   Created: 2017/02/26 14:20:31 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/26 15:00:03 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,74 @@
 
 void	swap(int *a, int *b)
 {
-	*a = *a + *b;
-	*b = *a - *b;
-	*a = *a - *b;
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
+#include <stdio.h>
+int		ascending(int a, int b)
 {
-	t_list	*p;
-	t_list	*t;
+		return (a <= b);
+}
 
-	t = lst;
+t_list		*sort_list(t_list* lst, int (*cmp)(int, int))
+{
+	t_list	*begin;
+	t_list	*p;
+
+	begin = lst;
 	while (lst)
 	{
 		p = lst->next;
 		while (p)
 		{
 			if (!(*cmp)(lst->data, p->data))
+			{
 				swap(&lst->data, &p->data);
+			}
 			p = p->next;
 		}
 		lst = lst->next;
 	}
-	return (t);
+	return (begin);
+}
+
+#include <stdlib.h>
+
+int		main(void)
+{
+	t_list *l;
+	int		i;
+	t_list	*t;
+	t_list	*b;
+
+	i = 50;
+	l = malloc(sizeof(t_list));
+	t = l;
+	b = l;
+	while (i)
+	{
+		l->data = i % 3;
+		l->next = malloc(sizeof(t_list));
+		l = l->next;
+		--i;
+	}
+	l->data = (int)"fromage";
+	l->next = NULL;
+	while (t)
+	{
+		printf("%d ", t->data);
+		t = t->next;
+		++i;
+	}
+	b = sort_list(b, ascending);
+	while (b)
+	{
+		printf("%d ", b->data);
+		b = b->next;
+		++i;
+	}
 }

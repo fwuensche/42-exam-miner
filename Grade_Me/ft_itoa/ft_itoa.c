@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 20:36:22 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/26 12:43:29 by angavrel         ###   ########.fr       */
+/*   Created: 2016/11/06 18:29:00 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/24 04:24:48 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	print_memory(const void *addr, size_t size);
-
-int		main(void)
+char	*ft_itoa(int n)
 {
-	int		tab[15] = {3772900067, 58597, 59111,
-		59625, 60139, 60653, 61167, 61681, 62195, 62709, 63223, 63737, 64251,
-	64765, 65279};
+	char	*s;
+	long	tmp;
+	int		length;
 
-	print_memory(tab, sizeof(tab));
-	return (0);
+	tmp = n;
+	length = (n <= 0 ? 2 : 1);
+	while (n && ++length)
+		n /= 10;
+	if (!(s = (char *)malloc(sizeof(char) * length)))
+		return (NULL);
+	s[--length] = '\0';
+	if (tmp <= 0)
+		s[0] = (tmp < 0 ? '-' : '0');
+	while (tmp)
+	{
+		s[--length] = (tmp < 0 ? -tmp : tmp) % 10 + '0';
+		tmp /= 10;
+	}
+	return (s);
 }

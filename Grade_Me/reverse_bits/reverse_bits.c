@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 20:36:22 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/26 12:43:29 by angavrel         ###   ########.fr       */
+/*   Created: 2017/01/12 20:19:07 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/14 03:29:00 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	print_memory(const void *addr, size_t size);
-
-int		main(void)
+unsigned char reverse_bits(unsigned char b)
 {
-	int		tab[15] = {3772900067, 58597, 59111,
-		59625, 60139, 60653, 61167, 61681, 62195, 62709, 63223, 63737, 64251,
-	64765, 65279};
+	unsigned char	r = 0;
+	unsigned		char_len = 8;
 
-	print_memory(tab, sizeof(tab));
-	return (0);
+	while (char_len--)
+	{
+		r = (r << 1) | (b & 1);
+		b >>= 1;
+	}
+	return (r);
 }
+

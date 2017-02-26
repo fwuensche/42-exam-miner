@@ -1,25 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 20:36:22 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/26 12:43:29 by angavrel         ###   ########.fr       */
+/*   Created: 2017/02/26 14:20:31 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/26 15:01:19 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "list.h"
 
-void	print_memory(const void *addr, size_t size);
-
-int		main(void)
+void	swap(int *a, int *b)
 {
-	int		tab[15] = {3772900067, 58597, 59111,
-		59625, 60139, 60653, 61167, 61681, 62195, 62709, 63223, 63737, 64251,
-	64765, 65279};
+	int	tmp;
 
-	print_memory(tab, sizeof(tab));
-	return (0);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+t_list		*sort_list(t_list* lst, int (*cmp)(int, int))
+{
+	t_list	*begin;
+	t_list	*p;
+
+	begin = lst;
+	while (lst)
+	{
+		p = lst->next;
+		while (p)
+		{
+			if (!(*cmp)(lst->data, p->data))
+			{
+				swap(&lst->data, &p->data);
+			}
+			p = p->next;
+		}
+		lst = lst->next;
+	}
+	return (begin);
 }

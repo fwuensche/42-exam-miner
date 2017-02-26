@@ -6,11 +6,11 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 16:31:30 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/08 17:22:35 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/24 03:55:59 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int	*a, int *b)
+void	ft_swap(int *a, int *b)
 {
 	int temp;
 
