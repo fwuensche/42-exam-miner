@@ -6,12 +6,12 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 03:32:55 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/24 05:35:26 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/26 22:42:45 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** thx to Anselme for his solution
+** Many thanks to Anselme for his original idea :
 ** https://github.com/grumbach/misc/blob/master/brackets/brackets.c
 */
 
@@ -20,10 +20,8 @@
 int	braclose(char *str, char c, int i, int b)
 {
 	while (b && *(++str) && (i++))
-		if (*str == c)
-			b++;
-		else if (*str == (c == '(' ? ')' : c + 2))
-			b--;
+		if (*str == c || *str == (c == '(' ? ')' : c + 2))
+			*str == c ? ++b : --b;
 	return (i);
 }
 
@@ -31,9 +29,7 @@ int	brackets(char *str, char c)
 {
 	if (*str == c)
 		return (1);
-	else if (!*str)
-		return (0);
-	else if (*str == ')' || *str == '}' || *str == ']')
+	else if (!*str || *str == ')' || *str == '}' || *str == ']')
 		return (0);
 	else if (*str == '(' || *str == '{' || *str == '[')
 		return (brackets(str + 1, (*str == '(' ? ')' : *str + 2))
