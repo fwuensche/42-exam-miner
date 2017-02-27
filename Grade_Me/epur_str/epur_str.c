@@ -6,7 +6,7 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 16:36:55 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/26 17:43:56 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/27 16:46:59 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	epur_str(char *s)
 	int i = 0;
 
 	while (s[i])
-		if (!isb(s[i++])))
+		if (!isb(s[i++]))
 			++len;
 	start = 0;
 	while (*s)

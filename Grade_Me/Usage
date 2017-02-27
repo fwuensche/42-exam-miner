@@ -1,1 +1,2 @@
 ~/exam-basedir/rendu && cp -r ../../Exam/Grade_Me/ ./
+git add  && gc -m "." && gp
