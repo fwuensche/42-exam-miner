@@ -6,9 +6,14 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:18:53 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/27 13:18:58 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/27 14:17:57 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** Many thanks to Anselme for his original idea :
+** https://github.com/grumbach/misc/blob/master/brackets/brackets.c
+*/
 
 #include <unistd.h>
 

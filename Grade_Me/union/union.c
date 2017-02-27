@@ -6,7 +6,7 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/20 16:16:51 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/08 16:37:08 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/27 13:29:50 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int		check(char *s, int i, char c)
 {
 	int a;
 
-	a = -1;
-	while (++a < i)
-		if (s[a] == c)
+	a = 0;
+	while (a < i)
+		if (s[a++] == c)
 			return (0);
 	return (1);
 }
