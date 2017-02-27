@@ -6,7 +6,7 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 04:18:19 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/24 04:20:48 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/27 11:54:18 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,13 @@
 void	fprime(int nb, int a, int i)
 {
 	a++;
-	while (nb % i && i < nb)
+	while (nb % i && i <= nb)
 		++i;
-	if (!nb % i)
-	{
-		if (a != 1)
-			printf("*");
-		printf("%d", i);
-		if (nb != i)
-			fprime(nb / i, a, i);
-	}
-	else
-		printf("%d", nb);
+	if (a != 1)
+		printf("*");
+	printf("%d", i);
+	if (i != nb)
+		fprime(nb / i, a, i);
 }
 
 
