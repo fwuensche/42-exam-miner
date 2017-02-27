@@ -6,7 +6,7 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:58:26 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/27 11:42:40 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/27 11:44:38 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putnbr(int n)
 {
 	if (n > 9)
 		ft_putnbr(n / 10);
-	ft_putchar(n + '0');
+	ft_putchar(n % 10 + '0');
 }
 
 int		main(int ac, char **av)
