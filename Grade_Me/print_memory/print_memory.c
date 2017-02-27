@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 04:29:55 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/24 05:29:18 by angavrel         ###   ########.fr       */
+/*   Created: 2017/02/27 11:56:32 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/27 15:16:02 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,54 +23,50 @@ void	ft_putstr(char *s)
 		ft_putchar(*s++);
 }
 
-void	ft_puthex(int n)
+void	ft_printhex(int n)
 {
-	if (n / 16)
-		ft_puthex(n / 16);
-	ft_putchar(n % 16 + (n % 16 < 10 ? '0' : 'a' - 10));
+	int c;
+
+	if (n >= 16)
+		ft_printhex(n / 16);
+	c = n % 16 + (n % 16 < 10 ? '0' : 'a' - 10);
+	ft_putchar(c);
 }
 
-void	print_chars(unsigned char *t, size_t n)
+void	ft_printchars(unsigned char c)
 {
-	while (n--)	
-	{
-		(*t > 31 && *t < 127) ? ft_putchar(*t) : ft_putchar('.');
-		++t;
-	}
-	ft_putchar('\n');
+	ft_putchar((c > 31 && c < 127) ? c : '.');
 }
 
 void	print_memory(const void *addr, size_t size)
 {
-	unsigned char	*t;
-	int				i;
-	int				col;
-	int				row;
+	unsigned char *t = (unsigned char *)addr;
+	size_t		i = 0;
+	int			col;
+	size_t		tmp = 0;
 
-	t = (unsigned char *) addr;
-	col = 1;
-	row = 0;
-	i = 0;
-	while (size--)
+	while (i < size)
 	{
-		if (t[i] <  16)
-			ft_putchar('0');
-		ft_puthex(t[i]);
-		if (i & 1)
-			ft_putchar(' ');
-		if (col++ >> 4)
+		col = -1;
+		tmp = i;
+		while (++col < 16)
 		{
-			print_chars(t + (row * 16), 16);
-			col = 1;
-			row++;
+			if (i < size)
+			{
+				if (t[i] < 16)
+					ft_putchar('0');
+				ft_printhex(t[i]);
+			}
+			else
+				ft_putstr("  ");
+			if (i % 2)
+				ft_putchar(' ');
+			++i;
 		}
-		i++;
-	}
-	if ((col = i - (row * 16)) > 0)
-	{
-		i = col;
-		while (i++ < 16)
-			(i & 1) ? ft_putchar(' ') : ft_putstr("    ");
-		print_chars(t + (row * 16), col);
+		col = -1;
+		i = tmp;
+		while (++col < 16 && i < size)
+			ft_printchars(t[i++]);
+		ft_putchar('\n');
 	}
 }
