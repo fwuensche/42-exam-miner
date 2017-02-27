@@ -6,7 +6,7 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 18:22:00 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/27 11:32:30 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/27 11:34:11 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strdup(char *src)
 {
 	char	*s;
-	int		len;
+	int		len = 0;
 
 	while (src[len])
 		++len;
