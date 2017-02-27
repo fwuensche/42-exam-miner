@@ -6,7 +6,7 @@
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 16:49:32 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/03 17:49:38 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/02/27 14:32:12 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_isalpha(char c)
 
 int		ft_alpha_mirror(int c)
 {
-	return (c = (c >= 'A' && c <= 'Z') ? 'Z' - (c - 'A') : 'z' - (c - 'a'));
+	return (- c + (c < 91 ? 'Z' + 'A' : 'z' + 'a'));
 }
 
 int		main(int ac, char **av)
