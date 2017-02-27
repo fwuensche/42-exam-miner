@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/03 22:36:30 by angavrel          #+#    #+#             */
-/*   Updated: 2017/01/28 18:24:40 by angavrel         ###   ########.fr       */
+/*   Created: 2017/02/27 18:00:30 by angavrel          #+#    #+#             */
+/*   Updated: 2017/02/27 18:05:49 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*ft_itoa_base(int value, int base)
 	n = (value < 0) ? -(long)value : value;
 	sign = (value < 0 && base == 10) ? -1 : 0;
 	len = (sign == -1) ? 2 : 1;
-	while ((n /= base) >= 1)
+	while ((n /= base))
 		++len;
-	s = (char*)malloc(sizeof(char) * (len + 1));
+	s = (char *)malloc(sizeof(char) * (len + 1));
 	s[len] = '\0';
 	n = (value < 0) ? -(long)value : value;
 	while (len-- + sign)
@@ -32,6 +32,6 @@ char	*ft_itoa_base(int value, int base)
 		s[len] = (n % base < 10) ? n % base + '0' : n % base + 'A' - 10;
 		n /= base;
 	}
-	(len == 0) ? s[0] = '-' : 0;
+	!len ? s[0] = '-' : 0;
 	return (s);
 }
