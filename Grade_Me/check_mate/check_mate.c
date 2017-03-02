@@ -1,81 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkmate.c                                        :+:      :+:    :+:   */
+/*   check_mate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/04 20:08:36 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/24 04:13:40 by angavrel         ###   ########.fr       */
+/*   Created: 2017/03/02 18:31:47 by angavrel          #+#    #+#             */
+/*   Updated: 2017/03/02 18:44:19 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include <unistd.h>
 
-int		check_mate(int ac, char **av)
+int	check_diag(int len, char b[len][len])
 {
-	int		y = 0;
-	int		x = 0;
-	int		len = 0;
-	int		b = 0;
-	int		a = 0;
-	char	**m;
-	int		i = 0;
 
-	while (ac-- > 1)
-		len++;
-	if (!(m = (char **)malloc(sizeof(char *) * len * (len + 1))))
-		return (0);
-	y = 0;
-	while (y < len)
+}
+
+int	check_mate(int len, char b[len][len])
+{
+	int		n;
+	int		y;
+	int		x;
+	int		a;
+	int		b;
+
+	a = 0;
+	b = 0;
+	y = -1;
+	while (++y < len)
 	{
-		if (!(m[y] = (char *)malloc(sizeof(char) * (len + 1))))
-			return (0);
-		x = 0;
-		while (av[y + 1][x])
+		x = -1;
+		while (++x < len)
 		{
-			m[y][x] = av[y + 1][x];
-			if (m[y][x] == 'K')
+			if (b[y][x] == 'K')
 			{
 				a = x;
 				b = y;
 			}
-			++x;
 		}
-		m[y][x] = 0;
-		++y;
 	}
+	n = 0;
+	n += check_diag(len, b);
+	n += check_row_col(len, b);
+	n += check_pawn(len, b);
+	return (n);
+}
 
-	if (m[b + 1][a + 1] == 'P' || m[b + 1][a - 1] == 'P')
-		return (0);
+int	board(int len, char **av)
+{
+	char	b[len][len];
+	int		i;
+	
+	i = -1;
 	while (i < len)
-	{
-		if (m[b][i] == 'Q' || m[i][a] == 'Q' || m[b][i] == 'R' || m[i][a] == 'R')
-			return (0);
-		if (i < b)
-		{
-			if (i < a && (m[b - i - 1][a - i - 1] == 'B' || m[b - i - 1][a - i - 1] == 'Q') )
-				return (0);
-			if (a + i < len && (m[b - i - 1][a + i + 1] == 'B' || m[b - i - 1][a + i + 1] == 'Q'))
-				return (0);
-		}
-		if (b + i < len)
-		{
-			if (i < a && (m[b + i + 1] [a - i - 1] == 'B' || m[b + i + 1] [a - i - 1] == 'Q'))
-				return (0);
-			if (a + i < len && (m[b + i + 1] [a + i + 1] == 'B' || m[b + i + 1] [a + i + 1] == 'Q' ))
-				return (0);
-		}
-		i++;
-	}
-	return (1);
+		*b[i] = *av[i + 1];
+	return (check_mate(len, b));
 }
 
 int		main(int ac, char **av)
 {
 	if (ac > 1)
-		(check_mate(ac, av)) ? write(1, "Success\n", 8) : write(1, "Fail\n", 5);
-	else
-		write(1, "\n", 1);
+		(parse(ac - 1, av)) ? write(1, "Success", 7) : write(1, "Fail", 4);
+	write(1, "\n", 1);
 	return (0);
 }
