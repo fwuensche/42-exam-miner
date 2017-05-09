@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 18:00:30 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/27 18:05:49 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/05/09 09:44:59 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_itoa_base(int value, int base)
 
 	n = (value < 0) ? -(long)value : value;
 	sign = (value < 0 && base == 10) ? -1 : 0;
-	len = (sign == -1) ? 2 : 1;
+	len = 1 - sign;
 	while ((n /= base))
 		++len;
 	s = (char *)malloc(sizeof(char) * (len + 1));
