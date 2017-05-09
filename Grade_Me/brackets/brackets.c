@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brackets.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:18:53 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/27 14:17:57 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/05/09 09:41:45 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int		bracketsclose(char *s, char c, int b, int i)
 {
 	while (b && *(++s) && i++)
-		if (*s == c || *s == c + c % 2 + 1)
+		if (*s == c || *s == c + (c & 1) + 1)
 			*s == c ? ++b : --b;
 	return (i);
 }
@@ -32,10 +32,9 @@ int		brackets(char *s, char c)
 	else if (!*s || *s == ')' || *s == '}' || *s == ']')
 		return (0);
 	else if (*s == '(' || *s == '{' || *s =='[')
-		return (brackets(s + 1, *s + *s % 2 + 1)
+		return (brackets(s + 1, *s + (*s & 1) + 1)
 				* brackets(s + bracketsclose(s, *s, 1, 1), c));
-	else
-		return (brackets(s + 1, c));
+	return (brackets(s + 1, c));
 }
 
 int		main(int ac, char **av)
