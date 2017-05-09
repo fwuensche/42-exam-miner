@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_memory.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 11:56:32 by angavrel          #+#    #+#             */
-/*   Updated: 2017/02/27 15:16:02 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/05/09 09:49:25 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	print_memory(const void *addr, size_t size)
 			}
 			else
 				ft_putstr("  ");
-			if (i % 2)
-				ft_putchar(' ');
-			++i;
+			ft_putchar((i++ & 1) << 6);
 		}
 		col = -1;
 		i = tmp;
