@@ -3,34 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   search_and_replace.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/27 06:33:21 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/27 06:44:12 by angavrel         ###   ########.fr       */
+/*   Created: 2017/07/14 15:09:23 by fwuensch          #+#    #+#             */
+/*   Updated: 2017/07/14 15:09:24 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *s)
-{
-	while (*s)
-		write(1, s++, 1);
-}
+int main(int argc, char **argv) {
+	int i;
 
-char	*search_and_replace(char *s, char a, char b)
-{
-	int	i = -1;
+	// we only need three parameters
+	if (argc != 4) {
+		write(1, "\n", 1);
+		return 0;
+	}
 
-	while (s[++i])
-		s[i] = (s[i] == a) ? b : s[i];
-	return (s);
-}
+	// the second and third arguments must be letters
+	if (argv[2][1] != '\0' || argv[3][1] != '\0') {
+		write(1, "\n", 1);
+		return 0;
+	}
 
-int		main(int ac, char **av)
-{
-	if (ac == 4 && *av[2] && !av[2][1] && *av[3] && !av[3][1])
-		ft_putstr(search_and_replace(av[1], *av[2], *av[3]));
+	// find and replace
+	i = 0;
+	while (argv[1][i] != '\0') {
+		if (argv[1][i] == argv[2][0])
+			argv[1][i] = argv[3][0];
+		write(1, &argv[1][i], 1);
+		i++;
+	}
+
 	write(1, "\n", 1);
-	return (0);
+	return 0;
 }
