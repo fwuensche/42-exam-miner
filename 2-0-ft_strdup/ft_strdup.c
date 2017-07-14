@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 18:22:00 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/05 17:49:34 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/07/14 16:14:13 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ char	*ft_strdup(char *src)
 	if (!(s = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	s[len] = '\0';
-	while (len-- > -1)
+	while (len >= 0)
+	{
 		s[len] = src[len];
+		len--;
+	}
 	return (s);
 }

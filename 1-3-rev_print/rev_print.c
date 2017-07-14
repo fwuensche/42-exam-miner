@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rev_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/27 10:47:34 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/27 10:50:06 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/07/14 15:38:39 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 void	ft_putchar(char c)
-{	
+{
 	write(1, &c, 1);
 }
 
@@ -37,7 +37,7 @@ int		main(int ac, char **av)
 	{
 		len = ft_strlen(av[1]);
 		while (len--)
-			ft_putchar(av[1][len]);
+			write(1, &av[1][len], 1);
 	}
 	ft_putchar('\n');
 }
