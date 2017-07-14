@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ulstr.c                                            :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/03 15:11:26 by angavrel          #+#    #+#             */
-/*   Updated: 2017/07/14 15:12:15 by fwuensch         ###   ########.fr       */
+/*   Created: 2017/07/14 15:17:06 by fwuensch          #+#    #+#             */
+/*   Updated: 2017/07/14 15:19:31 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-char	*ulstr(char *c)
-{
-	if (*c >= 'A' && *c <= 'Z')
-		*c += 32;
-	else if (*c >= 'a' && *c <= 'z')
-		*c -= 32;
-	return (c);
-}
-
 int		main(int ac, char **av)
 {
 	if (ac == 2)
-		while (*av[1])
-			write(1, ulstr(av[1]++), 1);
-	write(1, "\n", 1);
-	return (1);
+	{
+		while (*av[1] && (*av[1] == ' ' || *av[1] == '\t'))
+			++av[1];
+		while (*av[1] != '\0' && (*av[1] != ' ' && *av[1] != '\t'))
+			write(1, av[1]++, 1);
+	}
+	ft_putchar('\n');
+	return (0);
 }
