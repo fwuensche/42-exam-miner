@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   aff_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 14:15:08 by angavrel          #+#    #+#             */
-/*   Updated: 2017/01/28 17:38:17 by angavrel         ###   ########.fr       */
+/*   Created: 2017/07/13 21:38:04 by fwuensch          #+#    #+#             */
+/*   Updated: 2017/07/13 21:41:27 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+int		main(int argc, char **argv)
 {
-	write(1, &c, 1);
-}
-
-int		main(void)
-{
-	ft_putchar('a');
-	ft_putchar('\n');
+	if (argc != 2)
+		write(1, "a", 1);
+	else
+	{
+		while (*argv[1])
+			if (*argv[1] == 'a')
+			{
+				write(1, "a", 1);
+				argv[1]++;
+				break;
+			}
+	}
+	write(1, "\n", 1);
 	return (0);
 }
