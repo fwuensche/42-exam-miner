@@ -3,35 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   repeat_alpha.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:23:34 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/05 19:30:36 by angavrel         ###   ########.fr       */
+/*   Created: 2017/07/14 14:55:21 by fwuensch          #+#    #+#             */
+/*   Updated: 2017/07/14 14:59:21 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	ft_putchar(char c)
-{	
-	write(1, &c, 1);
-}
-
 
 int		letter_count(char c)
 {
 	int	repeat;
 
 	if (c >= 'A' && c <= 'Z')
-		repeat = c - 64;
+		repeat = c - 'A' + 1;
 	else if (c >= 'a' && c <= 'z')
-		repeat = c - 96;
+		repeat = c - 'a' + 1;
 	else
 		repeat = 1;
 	return (repeat);
 }
-
-
 
 int		main(int ac, char **av)
 {
@@ -43,7 +35,7 @@ int		main(int ac, char **av)
 		{
 			repeat = letter_count(*av[1]);
 			while (repeat--)
-				ft_putchar(*av[1]);
+				write(1, av[1], 1);
 			av[1]++;
 		}
 	}
