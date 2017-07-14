@@ -3,27 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_countdown.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:44:56 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/07 17:49:07 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/07/14 11:53:07 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 int		main(void)
 {
-	int i;
+	char c;
 
-	i = 10;
-	while (i-- > 0)
-		ft_putchar(i + '0');
-	ft_putchar('\n');
+	c = '9';
+	while (c >= '0')
+	{
+		write(1, &c, 1);
+		c--;
+	}
+	write(1, "\n", 1);
 	return (0);
 }
