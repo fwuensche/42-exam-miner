@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aff_first_param.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 15:00:02 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/03 15:06:01 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/07/14 12:25:39 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int		main(int ac, char **av)
 		while (*av[1])
 			write(1, av[1]++, 1);
 	write(1, "\n", 1);
-	return (1);
+	return (0);
 }
