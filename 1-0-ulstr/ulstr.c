@@ -6,26 +6,31 @@
 /*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 15:11:26 by angavrel          #+#    #+#             */
-/*   Updated: 2017/07/14 15:12:15 by fwuensch         ###   ########.fr       */
+/*   Updated: 2017/07/14 15:28:42 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-char	*ulstr(char *c)
-{
-	if (*c >= 'A' && *c <= 'Z')
-		*c += 32;
-	else if (*c >= 'a' && *c <= 'z')
-		*c -= 32;
-	return (c);
-}
-
 int		main(int ac, char **av)
 {
 	if (ac == 2)
+	{
 		while (*av[1])
-			write(1, ulstr(av[1]++), 1);
+		{
+			if (*av[1] >= 'A' && *av[1] <= 'Z')
+			{
+				*av[1] += 32;
+				write(1, av[1], 1);
+			}
+			else if (*av[1] >= 'a' && *av[1] <= 'z')
+			{
+				*av[1] -= 32;
+				write(1, av[1], 1);
+			}
+			av[1]++;
+		}
+	}
 	write(1, "\n", 1);
 	return (1);
 }
