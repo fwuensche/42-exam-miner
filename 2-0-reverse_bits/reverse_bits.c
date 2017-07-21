@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 20:19:07 by angavrel          #+#    #+#             */
-/*   Updated: 2017/01/12 20:27:33 by angavrel         ###   ########.fr       */
+/*   Updated: 2017/07/20 21:23:31 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ unsigned char reverse_bits2(unsigned char b)
 {
 	unsigned char	r = 0;
 	unsigned		char_len = 8;
+
 	while (char_len--)
 	{
 		r = (r << 1) | (b & 1);
@@ -42,10 +43,11 @@ int	main(void)
 {
 	unsigned char c;
 
-	c = '.';
+	c = '&';
 	write(1, &c, 1);
+	write(1, "\n", 1);
 	c = reverse_bits(c);
 	write(1, &c, 1);
+	write(1, "\n", 1);
 	return (0);
 }
-
