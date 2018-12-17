@@ -1,5 +1,13 @@
-## Purpose
-This git provide useful tips to understand how to achieve 100 at 42 exams. However one should not memorize answers if not properly understood.
+#### Purpose
 
-## Contact & contribute
-To contact me and helping me to (fix bugs || improve) 42-Exam, feel free to e-mail me at **angavrel at student dot 42 dot fr**
+This repo provides useful tips to understand how to achieve 100% at 42 exams. 
+
+A great developer like you, however, should not just memorize the answers.
+
+#### Contribute
+
+Please feel free to fork this repo and submit your (most likely better solutions) as a PR.
+
+---
+
+### So long and thanks for all the fish.
