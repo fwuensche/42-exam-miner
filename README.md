@@ -1,10 +1,10 @@
-#### Purpose
+### Purpose
 
 This repo provides useful tips to understand how to achieve 100% at 42 exams. 
 
 A great developer like you, however, should not just memorize the answers.
 
-#### Contribute
+### Contribute
 
 Please feel free to fork this repo and submit your (most likely better solutions) as a PR.
 
