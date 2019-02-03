@@ -1,12 +1,6 @@
-### Purpose
+### If you're missing a solution, create an issue and attach the subject.
 
-This repo provides useful tips to understand how to achieve 100% at 42 exams. 
-
-A great developer like you 😎, however, should not just memorize the answers.
-
-### Contribute
-
-Please feel free to fork this repo and submit your (most likely better) solutions as a PR.
+### If you have new solutions, submit them as a Pull Request.
 
 ---
 
