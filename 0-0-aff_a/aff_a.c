@@ -19,12 +19,14 @@ int		main(int argc, char **argv)
 	else
 	{
 		while (*argv[1])
+		{
 			if (*argv[1] == 'a')
 			{
 				write(1, "a", 1);
 				break;
 			}
 			argv[1]++;
+		}
 	}
 	write(1, "\n", 1);
 	return (0);
