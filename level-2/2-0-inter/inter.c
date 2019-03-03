@@ -13,37 +13,29 @@
 #include <unistd.h>
 
 void solve(char *str1, char *str2) {
-	int vf[128];
-	int	i;
-	char c;
+    int i;
+    int j;
+    int ascii[256] = {0};
 
-	i = 0;
-	while (i < 128)
-		vf[i++] = 0;
+    i = 0;
+    while (str2[i])
+    {
+        if (ascii[(int)str2[i]] == 0)
+            ascii[(int)str2[i]] = 1;
+        i++;
+    }
 
-	i = 0;
-	while (str2[i]) {
-		if (vf[(int)str2[i]] == 0)
-			vf[(int)str2[i]] = 1;
-		i++;
-	}
-
-	i = 0;
-	while (str1[i]) {
-		if (vf[(int)str1[i]] == 1)
-			vf[(int)str1[i]] = 2;
-		i++;
-	}
-
-	i = 0;
-	while (i < 128) {
-		if (vf[i] == 2)
-		{
-			c = i;
-			write(1, &c, 1);
-		}
-		i++;
-	}
+    i = 0;
+    j = 0;
+    while (str1[i])
+    {
+        if (ascii[(int)str1[i]] == 1)
+        {
+            ascii[(int)str1[i]] = 2;
+            write(1, &str1[i], 1);
+        }
+        i++;
+    }
 
 }
 
