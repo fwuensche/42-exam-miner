@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fprime.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fwuensche <fwuensche@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/04 16:17:29 by angavrel          #+#    #+#             */
-/*   Updated: 2017/01/12 20:05:55 by angavrel         ###   ########.fr       */
+/*   Created: 2019/03/04 15:47:01 by fwuensche         #+#    #+#             */
+/*   Updated: 2019/03/04 15:48:26 by fwuensche        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,29 @@
 
 void	fprime(unsigned int nb)
 {
-	unsigned	i;
+	unsigned int	prime;
 
 	if (nb == 1)
+	{
 		printf("1");
+	}
 	else
 	{
-		i = 1;
+		prime = 2;
 		while (nb > 1)
 		{
-			if (nb % ++i == 0)
+			if (nb % prime == 0)
 			{
-				printf("%d", i);
-				nb /= i;
+				printf("%d", prime);
+				nb /= prime;
 				if (nb > 1)
 					printf("*");
-				--i;
+				prime--;
 			}
+			prime++;
 		}
 	}
 }
-
 
 int		main(int ac, char **av)
 {
