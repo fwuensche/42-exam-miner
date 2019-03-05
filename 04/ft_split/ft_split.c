@@ -6,29 +6,31 @@
 /*   By: fwuensche <fwuensche@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 08:09:54 by fwuensche         #+#    #+#             */
-/*   Updated: 2019/03/05 08:10:19 by fwuensche        ###   ########.fr       */
+/*   Updated: 2019/03/05 08:26:58 by fwuensche        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_isspace(char c)
+int			ft_isspace(char c)
 {
 	return (c == ' ' || c == '\n' || c == '\t');
 }
 
 int		count_words(char *str)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (*str)
 	{
+		// move to the beggining of a new word
 		while (*str && ft_isspace(*str))
 			str++;
 		if (*str && !ft_isspace(*str))
 		{
 			count++;
+			// move to the next whitespace
 			while (*str && !ft_isspace(*str))
 				str++;
 		}
@@ -39,7 +41,7 @@ int		count_words(char *str)
 char	*malloc_word(char *str)
 {
 	char *word;
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && !ft_isspace(str[i]))
@@ -57,21 +59,21 @@ char	*malloc_word(char *str)
 
 char	**ft_split(char *str)
 {
-	int word_count;
-	char **arr;
-	int i;
+	char **arr = (char **)malloc(sizeof(char *) * (count_words(str) + 1));
 
-	word_count = count_words(str);
-	arr = (char **)malloc(sizeof(char *) * (word_count + 1));
-	i = 0;
+	// same as count_words, except we save word to array instead of counting
+	int i = 0;
 	while (*str)
 	{
+		// move to the beggining of a new word
 		while (*str && ft_isspace(*str))
 			str++;
 		if (*str && !ft_isspace(*str))
 		{
+			// save word to array
 			arr[i] = malloc_word(str);
 			i++;
+			// move to the next whitespace
 			while (*str && !ft_isspace(*str))
 				str++;
 		}
@@ -86,9 +88,10 @@ char	**ft_split(char *str)
 // {
 // 	char **arr;
 
-// 	char *phrase = "Hello, Flavio!";
+// 	char *phrase = "   Hello,   Flavio\t Wuensche!  ";
 // 	arr = ft_split(phrase);
 // 	printf("%s\n", arr[0]);
 // 	printf("%s\n", arr[1]);
 // 	printf("%s\n", arr[2]);
+// 	printf("%s\n", arr[3]);
 // }
