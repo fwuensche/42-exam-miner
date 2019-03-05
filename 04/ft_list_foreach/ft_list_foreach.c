@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fwuensche <fwuensche@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/03 22:18:13 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/03 22:19:31 by angavrel         ###   ########.fr       */
+/*   Created: 2016/12/03 22:15:57 by angavrel          #+#    #+#             */
+/*   Updated: 2019/03/05 07:47:01 by fwuensche        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#include "ft_list.h"
 
-typedef struct	s_list
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-	struct s_list	*next;
-	void			*data;
-}				t_list;
+	t_list	*curr;
 
-#endif
+	curr = begin_list;
+	while (curr)
+	{
+		(*f)(curr->data);
+		curr = curr->next;
+	}
+}
