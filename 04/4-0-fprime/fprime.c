@@ -6,7 +6,7 @@
 /*   By: fwuensche <fwuensche@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:47:01 by fwuensche         #+#    #+#             */
-/*   Updated: 2019/03/04 15:48:26 by fwuensche        ###   ########.fr       */
+/*   Updated: 2019/03/05 07:40:34 by fwuensche        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	fprime(unsigned int nb)
 	unsigned int	prime;
 
 	if (nb == 1)
-	{
 		printf("1");
-	}
 	else
 	{
 		prime = 2;
