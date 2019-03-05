@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_remove_if.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fwuensche <fwuensche@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 17:53:59 by angavrel          #+#    #+#             */
-/*   Updated: 2016/12/05 21:52:07 by angavrel         ###   ########.fr       */
+/*   Updated: 2019/03/05 08:39:05 by fwuensche        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,26 @@
 
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
+	t_list	*curr;
 	t_list	*tmp;
-	t_list	*i;
 
 	while (*begin_list && cmp((*begin_list)->data, data_ref) == 0)
 	{
-		tmp = *begin_list;
+		curr = *begin_list;
 		*begin_list = (*begin_list)->next;
-		free(tmp);
+		free(curr);
 	}
-	i = *begin_list;
-	while (i && i->next)
+	curr = *begin_list;
+	while (curr && curr->next)
 	{
-		if (cmp(i->next->data, data_ref) == 0)
+		if (cmp(curr->next->data, data_ref) == 0)
 		{
-			tmp = i->next;
-			i->next = tmp->next;
-			free (tmp);
+			tmp = curr->next;
+			curr->next = tmp->next;
+			free(tmp);
 		}
-		i = i->next;
+		curr = curr->next;
 	}
 }
+
+// hey you, would you mind submitting a main for this exercise?
