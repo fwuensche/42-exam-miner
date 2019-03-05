@@ -1,11 +1,13 @@
 # How can you help?
 
-- add a main to exercises that are only functions so others can easily test it
-- add new exercises as you find them in examshell
+- add a main to exercises that are only functions
+- add new exercises ([sample](https://github.com/fwuensche/42-exam-miner/pull/1/files))
 - reorganize exercises in its corresponding level
 - improve solutions by:
-  - better naming variables
-  - being rather explicit (for instace, avoid one-liners)
+  - better naming variables and functions
+  - being rather explicit then implicit (for instance, avoid one-liners)
+  - catching bugs ([sample](https://github.com/fwuensche/42-exam-miner/pull/2/files))
+  - proposing your own solution as an alternative ([sample](https://github.com/fwuensche/42-exam-miner/pull/3/files))
 
 ---
 
