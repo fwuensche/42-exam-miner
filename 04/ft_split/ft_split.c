@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwuensche <fwuensche@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 18:16:08 by angavrel          #+#    #+#             */
-/*   Updated: 2019/03/05 08:09:23 by fwuensche        ###   ########.fr       */
+/*   Created: 2019/03/05 08:09:54 by fwuensche         #+#    #+#             */
+/*   Updated: 2019/03/05 08:10:19 by fwuensche        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,15 @@ char	**ft_split(char *str)
 	return (arr);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int		main(int ac, char **av)
-{
-	char **arr;
+// int		main(int ac, char **av)
+// {
+// 	char **arr;
 
-	char *phrase = "Hello, Flavio!";
-	arr = ft_split(phrase);
-	printf("%s\n", arr[0]);
-	printf("%s\n", arr[1]);
-	printf("%s\n", arr[2]);
-}
+// 	char *phrase = "Hello, Flavio!";
+// 	arr = ft_split(phrase);
+// 	printf("%s\n", arr[0]);
+// 	printf("%s\n", arr[1]);
+// 	printf("%s\n", arr[2]);
+// }
