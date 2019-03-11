@@ -12,9 +12,8 @@
 ### More specifically, some actionable tasks are:
 
 - [ ] solve ft_itoa ([here](https://github.com/fwuensche/42-exam-miner/tree/master/04/4-4-ft_itoa))
-- [ ] add a main to ft_list_foreach ([here](https://github.com/fwuensche/42-exam-miner/tree/master/04/ft_list_foreach))
-- [x] remove sort_int_tab duplicate file ([here](https://github.com/fwuensche/42-exam-miner/tree/master/04/4-3-sort_int_tab))
-- [ ] remove check_mate duplicate file ([here](https://github.com/fwuensche/42-exam-miner/tree/master/04/4-5-check_mate))
+- [ ] add a main to test ft_list_foreach ([here](https://github.com/fwuensche/42-exam-miner/tree/master/04/ft_list_foreach))
+- [ ] submit the subject (and solution if possible) for flood_fill (new question)
 
 ---
 
