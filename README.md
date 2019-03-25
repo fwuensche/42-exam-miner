@@ -9,11 +9,7 @@
   - catching bugs ([sample](https://github.com/fwuensche/42-exam-miner/pull/2/files))
   - proposing your own solution as an alternative ([sample](https://github.com/fwuensche/42-exam-miner/pull/3/files))
 
-### More specifically, some actionable tasks are:
-
-- [ ] solve ft_itoa ([here](https://github.com/fwuensche/42-exam-miner/tree/master/04/4-4-ft_itoa))
-- [ ] add a main to test ft_list_foreach ([here](https://github.com/fwuensche/42-exam-miner/tree/master/04/ft_list_foreach))
-- [ ] submit the subject (and solution if possible) for flood_fill (new question)
+### More specifically, some actionable tasks are available in the Issues session above. 
 
 ---
 
