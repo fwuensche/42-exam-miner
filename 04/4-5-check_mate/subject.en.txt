@@ -31,7 +31,7 @@ Examples:
 
 $> ./chessmate '..' '.K' | cat -e
 Fail$
-$> ./chessmate 'R...' '..P.' '.K..' '....' | cat -e
+$> ./chessmate 'R...' '.K..' '..P.' '....' | cat -e
 Success$
 $> ./chessmate 'R...' 'iheK' '....' 'jeiR' | cat -e
 Success$
