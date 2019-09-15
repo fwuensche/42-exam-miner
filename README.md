@@ -15,4 +15,8 @@
 
 ---
 
-### So long and thanks for all the fish 🐬
+### Other 42 related projects
+
+- https://github.com/fwuensche/42-config
+- https://github.com/fwuensche/42-test-monial
+- https://github.com/fwuensche/42-piscine-c
