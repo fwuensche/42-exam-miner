@@ -6,8 +6,8 @@ Some tasks are listed in the Issues session above, but you can also:
 
 - add a main.c file to exercises that are only functions
 - add new exercises ([sample](https://github.com/fwuensche/42-exam-miner/pull/1/files))
-- reorganize exercises in its corresponding level
-- improve solutions by:
+- reorganize exercises inside the correct folders
+- improve solutions:
   - better naming variables and functions
   - being rather explicit then implicit (for instance, avoid one-liners)
   - catching bugs ([sample](https://github.com/fwuensche/42-exam-miner/pull/2/files))
