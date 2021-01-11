@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: musoufi <musoufi@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 16:28:43 by fwuensch          #+#    #+#             */
-/*   Updated: 2017/07/14 16:47:09 by fwuensch         ###   ########.fr       */
+/*   Updated: 2021/01/11 14:48:46 by musoufi          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void solve(char *str1, char *str2) {
     int i;
-    int j;
     int ascii[256] = {0};
 
     i = 0;
@@ -26,7 +25,6 @@ void solve(char *str1, char *str2) {
     }
 
     i = 0;
-    j = 0;
     while (str1[i])
     {
         if (ascii[(int)str1[i]] == 1)
